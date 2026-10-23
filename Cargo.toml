@@ -1,0 +1,13 @@
+[package]
+name = "crabboard"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pest = "2.7"
+pest_derive = "2.7"
+crossterm = "0.27"
+lazy_static = "1.4"
+
+[build-dependencies]
+cc = "1.0"

@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#090d16" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- PCB Chip Gradient -->
+    <linearGradient id="chipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <!-- Crab Shell Gradient -->
+    <linearGradient id="crabGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b4a"/>
+      <stop offset="40%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+
+    <!-- Claw Gradient -->
+    <linearGradient id="clawGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+
+    <!-- Gold Pin Gradient -->
+    <linearGradient id="pinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+
+    <!-- Cyan Trace Glow -->
+    <linearGradient id="traceGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#bgGlow)" stroke="#334155" stroke-width="3"/>
+
+  <!-- Circuit Trace Ring & Dots -->
+  <circle cx="256" cy="256" r="215" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="8 12"/>
+  <circle cx="256" cy="256" r="185" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- PCB Copper Traces -->
+  <g stroke="url(#traceGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+    <path d="M 80 180 L 130 180 L 160 210"/>
+    <circle cx="80" cy="180" r="4" fill="#38bdf8"/>
+
+    <path d="M 80 330 L 130 330 L 160 300"/>
+    <circle cx="80" cy="330" r="4" fill="#38bdf8"/>
+
+    <path d="M 432 180 L 382 180 L 352 210"/>
+    <circle cx="432" cy="180" r="4" fill="#818cf8"/>
+
+    <path d="M 432 330 L 382 330 L 352 300"/>
+    <circle cx="432" cy="330" r="4" fill="#818cf8"/>
+
+    <path d="M 210 70 L 210 110 L 230 130"/>
+    <circle cx="210" cy="70" r="4" fill="#38bdf8"/>
+
+    <path d="M 302 70 L 302 110 L 282 130"/>
+    <circle cx="302" cy="70" r="4" fill="#818cf8"/>
+
+    <path d="M 256 440 L 256 395"/>
+    <circle cx="256" cy="440" r="4" fill="#38bdf8"/>
+  </g>
+
+  <!-- IC Microcontroller Board -->
+  <g id="ic-chip">
+    <!-- IC Pins (Left & Right) -->
+    <g fill="url(#pinGrad)" stroke="#a16207" stroke-width="0.5">
+      <!-- Left Pins -->
+      <rect x="110" y="185" width="22" height="10" rx="2"/>
+      <rect x="110" y="210" width="22" height="10" rx="2"/>
+      <rect x="110" y="235" width="22" height="10" rx="2"/>
+      <rect x="110" y="260" width="22" height="10" rx="2"/>
+      <rect x="110" y="285" width="22" height="10" rx="2"/>
+      <rect x="110" y="310" width="22" height="10" rx="2"/>
+
+      <!-- Right Pins -->
+      <rect x="380" y="185" width="22" height="10" rx="2"/>
+      <rect x="380" y="210" width="22" height="10" rx="2"/>
+      <rect x="380" y="235" width="22" height="10" rx="2"/>
+      <rect x="380" y="260" width="22" height="10" rx="2"/>
+      <rect x="380" y="285" width="22" height="10" rx="2"/>
+      <rect x="380" y="310" width="22" height="10" rx="2"/>
+    </g>
+
+    <!-- Chip Body -->
+    <rect x="125" y="155" width="262" height="195" rx="16" fill="url(#chipGrad)" stroke="#475569" stroke-width="3"/>
+
+    <!-- Pin 1 Notch -->
+    <path d="M 125 240 A 12 12 0 0 1 125 264 Z" fill="#020617" stroke="#475569" stroke-width="2"/>
+
+    <!-- Chip Label / Markings -->
+    <text x="256" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle" letter-spacing="3">CRABBOARD • ATMEGA328P</text>
+  </g>
+
+  <!-- Crab Legs (Mechanical Micro-Buses) -->
+  <g stroke="url(#crabGrad)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Left Legs -->
+    <path d="M 175 285 L 125 320 L 100 360"/>
+    <path d="M 180 305 L 140 350 L 120 395"/>
+    <path d="M 195 325 L 170 380 L 155 420"/>
+
+    <!-- Right Legs -->
+    <path d="M 337 285 L 387 320 L 412 360"/>
+    <path d="M 332 305 L 372 350 L 392 395"/>
+    <path d="M 317 325 L 342 380 L 357 420"/>
+  </g>
+
+  <!-- Claws Arms -->
+  <g stroke="url(#crabGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M 195 240 Q 140 215 135 155"/>
+    <path d="M 317 240 Q 372 215 377 155"/>
+  </g>
+
+  <!-- Big Mechanical Claws -->
+  <g fill="url(#clawGrad)" stroke="#9f1239" stroke-width="2">
+    <!-- Left Claw (Pincer) -->
+    <g transform="translate(135, 145) rotate(-25)">
+      <path d="M 0 0 C -25 -25 -40 -60 -15 -85 C 0 -60 10 -40 15 -25 C 20 -40 35 -60 50 -70 C 45 -45 35 -20 15 5 Z"/>
+      <circle cx="-2" cy="-45" r="3" fill="#ffe4e6"/>
+      <circle cx="25" cy="-35" r="3" fill="#ffe4e6"/>
+    </g>
+
+    <!-- Right Claw (Pincer) -->
+    <g transform="translate(377, 145) rotate(25)">
+      <path d="M 0 0 C 25 -25 40 -60 15 -85 C 0 -60 -10 -40 -15 -25 C -20 -40 -35 -60 -50 -70 C -45 -45 -35 -20 -15 5 Z"/>
+      <circle cx="2" cy="-45" r="3" fill="#ffe4e6"/>
+      <circle cx="-25" cy="-35" r="3" fill="#ffe4e6"/>
+    </g>
+  </g>
+
+  <!-- Crab Shell / Carapace -->
+  <ellipse cx="256" cy="275" rx="82" ry="62" fill="url(#crabGrad)" stroke="#9f1239" stroke-width="3"/>
+
+  <!-- Eyestalks & Glowing Sensor Eyes -->
+  <g stroke="#9f1239" stroke-width="4" stroke-linecap="round">
+    <line x1="230" y1="225" x2="222" y2="198"/>
+    <line x1="282" y1="225" x2="290" y2="198"/>
+  </g>
+  <circle cx="220" cy="195" r="9" fill="#020617" stroke="#fb7185" stroke-width="2"/>
+  <circle cx="220" cy="195" r="5" fill="#38bdf8" filter="url(#softGlow)"/>
+  <circle cx="222" cy="193" r="1.5" fill="#ffffff"/>
+
+  <circle cx="292" cy="195" r="9" fill="#020617" stroke="#fb7185" stroke-width="2"/>
+  <circle cx="292" cy="195" r="5" fill="#38bdf8" filter="url(#softGlow)"/>
+  <circle cx="294" cy="193" r="1.5" fill="#ffffff"/>
+
+  <!-- Center Energy Core / Lightning Bolt ⚡ -->
+  <g filter="url(#glow)">
+    <polygon points="262,235 240,272 254,272 248,310 274,264 258,264" fill="#fde047" stroke="#ca8a04" stroke-width="1.5"/>
+  </g>
+
+  <!-- Pin 13 Activity Status LED (Top Right) -->
+  <g>
+    <rect x="330" y="168" width="12" height="18" rx="2" fill="#334155" stroke="#475569" stroke-width="1"/>
+    <circle cx="336" cy="177" r="5" fill="#ef4444" filter="url(#glow)"/>
+    <circle cx="336" cy="177" r="2.5" fill="#fecaca"/>
+    <text x="350" y="181" font-family="monospace" font-size="8" font-weight="bold" fill="#ef4444">D13</text>
+  </g>
+
+  <!-- Rust Gear Accent (Subtle bottom watermark) -->
+  <g transform="translate(256, 375) scale(0.6)" opacity="0.35" fill="#38bdf8">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#38bdf8" stroke-width="4"/>
+    <path d="M -4 -26 L 4 -26 L 3 -20 L -3 -20 Z"/>
+    <path d="M -4 26 L 4 26 L 3 20 L -3 20 Z"/>
+    <path d="M -26 -4 L -26 4 L -20 3 L -20 -3 Z"/>
+    <path d="M 26 -4 L 26 4 L 20 3 L 20 -3 Z"/>
+  </g>
+
+  <!-- Brand Title -->
+  <text x="256" y="475" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="900" fill="#f8fafc" text-anchor="middle" letter-spacing="4">CRABBOARD</text>
+  <text x="256" y="492" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="600" fill="#38bdf8" text-anchor="middle" letter-spacing="2">VIRTUAL ARDUINO ENGINE</text>
+</svg>

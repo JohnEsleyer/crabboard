@@ -1,0 +1,20 @@
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+COMMENT    = _{ "//" ~ (!"\n" ~ ANY)* }
+
+ident = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
+pin_number = @{ ASCII_DIGIT+ }
+resistor_val = @{ ASCII_DIGIT+ ~ ("k" | "M" | "R")? }
+
+pin_target = { "pin(" ~ pin_number ~ ")" }
+
+// Syntax options:
+// LED RedLED -> pin(13) [resistor: 220R]
+// LED RedLED -> pin(13)
+component_type = { "LED" | "BUTTON" }
+resistor_spec  = { "[" ~ "resistor:" ~ resistor_val ~ "]" }
+
+component_decl = { component_type ~ ident ~ "->" ~ pin_target ~ resistor_spec? }
+mcu_decl = { "MCU" ~ ident }
+
+statement = { mcu_decl | component_decl }
+circuit_file = { SOI ~ statement* ~ EOI }
